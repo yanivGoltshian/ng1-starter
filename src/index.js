@@ -7,4 +7,3 @@ angular.module('app', [])
        <h1>Hello AngularJS!</h1>
       `
   });
-
