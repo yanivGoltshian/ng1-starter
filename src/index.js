@@ -1,16 +1,37 @@
-import angular from 'angular';
+import angular from "angular";
+import "index.css";
 
-// define angular module
+class Todolist {
+
+  constructor($scope) {
+    this.title = "My Todo List!";
+    this.items = [];
+    this._item = '';
+  }
+
+  get item(){
+    return this._item;
+  }
+
+  set item(value) {
+    this._item = value;
+  }
+
+  addItem(item) {
+    this.items.push(item);
+    this.item = '';
+  }
+
+  removeItem(item) {
+    const index = this.items.indexOf(item);
+    this.items.splice(index, 1);
+  }
+}
+
 angular.module('app', [])
+  .controller({Todolist});
 
-  // create a root component
-  .component('root', {
-      template: `
-       <h1>Hello AngularJS!</h1>
-      `
-  });
 
-// bootstrap the root component
-angular.element(document).ready(function() {
+document.addEventListener('DOMContentLoaded', function () {
   angular.bootstrap(document, ['app']);
 });

@@ -4,11 +4,26 @@
   <meta charset="UTF-8">
   <title>Document</title>
 </head>
-<body>
 
-  <!-- render root compoennt -->
-  <root></root>
+<body ng-controller="Todolist as todolist">
 
-  <script src="bundle.js"></script>
+<h1>{{todolist.title}}</h1>
+
+
+<input type="text"
+       ng-model="todolist.item"
+       placeholder="add todo..">
+
+<button ng-click="todolist.addItem(todolist.item)">Add</button>
+
+<ul>
+  <li ng-repeat="item in todolist.items">
+    {{item}}
+    <button ng-click="todolist.removeItem(item)">X</button>
+  </li>
+
+</ul>
+
+<script src="bundle.js"></script>
 </body>
 </html>
