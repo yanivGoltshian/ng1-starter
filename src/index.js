@@ -2,10 +2,11 @@ import "index.css";
 
 export class Todolist {
 
-  constructor() {
+  constructor(ListModel) {
+    this.list = ListModel;
     this.title = "My Todo List!";
-    this.items = [];
     this.item  = {text: '', done: false, editMode: false}
+    this.items = ListModel.items;
   }
 
   editMode(item, flag){
@@ -21,14 +22,14 @@ export class Todolist {
 
   addItem(event) {
     if (event.keyCode === 13) {
-      this.items.push(this.item);
-      this.item = {};
+      this.list.insert(this.item);
+      this.item = {}
     }
   }
 
   removeItem(item) {
-    const index = this.items.indexOf(item);
-    this.items.splice(index, 1);
+    this.list.remove(this.item);
   }
+
 }
 

@@ -3,10 +3,16 @@ import angular from "angular";
 // import views
 import {Todolist} from './index';
 
+// import services
+import {ListModel} from "./models/list-model";
+
 
 // create the main module
 angular.module('app', [])
-  .controller({Todolist});
+
+  .controller('Todolist', Todolist)
+
+  .service('ListModel', ListModel);
 
 
 // go go go!
