@@ -1,25 +1,31 @@
 import angular from "angular";
 import "index.css";
 
+
 class Todolist {
 
-  constructor($scope) {
+  constructor() {
     this.title = "My Todo List!";
     this.items = [];
-    this._item = '';
+    this.item  = {text: '', done: false, editMode: false}
   }
 
-  get item(){
-    return this._item;
+  editMode(item, flag){
+    item.editMode = flag;
   }
 
-  set item(value) {
-    this._item = value;
+  getClass(item) {
+    return {
+      completed: item.done,
+      editing: item.editMode
+    }
   }
 
-  addItem(item) {
-    this.items.push(item);
-    this.item = '';
+  addItem(event) {
+    if (event.keyCode === 13) {
+      this.items.push(this.item);
+      this.item = {};
+    }
   }
 
   removeItem(item) {

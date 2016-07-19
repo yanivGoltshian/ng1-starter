@@ -7,23 +7,73 @@
 
 <body ng-controller="Todolist as todolist">
 
-<h1>{{todolist.title}}</h1>
+<section class="todoapp">
+
+  <!--Header-->
+  <header class="header">
+
+    <!-- Header Title-->
+    <h1>{{todolist.title}}</h1>
+
+    <!--Header Form-->
+    <input class="new-todo"
+           ng-model="todolist.item.text"
+           placeholder="What needs to be done?"
+           ng-keypress="todolist.addItem($event)"
+           autofocus>
+  </header>
+
+  <!-- Content -->
+  <section class="main">
+
+    <!-- Toggle-->
+    <input class="toggle-all"
+           type="checkbox">
+
+    <!-- List -->
+    <ul class="todo-list">
+
+      <!-- Item -->
+      <li ng-repeat="item in todolist.items"
+          ng-class="todolist.getClass(item)">
+
+        <div class="view">
+          <input class="toggle"
+                 ng-model="item.done"
+                 type="checkbox">
+
+          <label ng-dblclick="todolist.editMode(item, true)">{{item.text}}</label>
+
+          <button ng-click="todolist.removeItem(item)"
+                  class="destroy">
+          </button>
+
+        </div>
+
+        <input ng-blur="todolist.editMode(item, false)"
+               class="edit"
+               ng-model="item.text">
+
+      </li>
 
 
-<input type="text"
-       ng-model="todolist.item"
-       placeholder="add todo..">
 
-<button ng-click="todolist.addItem(todolist.item)">Add</button>
+    </ul>
+    <!-- /List-->
+  </section>
+  <!-- /Content-->
 
-<ul>
-  <li ng-repeat="item in todolist.items">
-    {{item}}
-    <button ng-click="todolist.removeItem(item)">X</button>
-  </li>
+  <!--Footer-->
+  <footer class="footer">
+    <span class="todo-count">
+      <strong>1</strong>
+      item left
+    </span>
+    <button class="clear-completed">Clear completed</button>
+  </footer>
+  <!--End Footer-->
 
-</ul>
-
+</section>
 <script src="bundle.js"></script>
 </body>
 </html>

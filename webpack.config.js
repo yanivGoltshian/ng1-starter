@@ -8,10 +8,6 @@ module.exports = {
     root: path.join(__dirname, '/src')
   },
 
-  output: {
-    filename: path.join(__dirname, '/dist.js')
-  },
-
   module: {
     loaders: [
       {
