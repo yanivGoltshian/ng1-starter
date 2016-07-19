@@ -1,8 +1,6 @@
-import angular from "angular";
 import "index.css";
 
-
-class Todolist {
+export class Todolist {
 
   constructor() {
     this.title = "My Todo List!";
@@ -34,10 +32,3 @@ class Todolist {
   }
 }
 
-angular.module('app', [])
-  .controller({Todolist});
-
-
-document.addEventListener('DOMContentLoaded', function () {
-  angular.bootstrap(document, ['app']);
-});
